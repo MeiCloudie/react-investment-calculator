@@ -36,7 +36,15 @@ function App() {
 
       <UserInput onCalculate={calculateHandler} />
 
-      <ResultsTable />
+      {!userInput && (
+        <p style={{ textAlign: "center" }}>No investment calculated yet.</p>
+      )}
+      {userInput && (
+        <ResultsTable
+          data={yearlyData}
+          initialInvestment={userInput["current-savings"]}
+        />
+      )}
     </div>
   );
 }
